@@ -1,0 +1,180 @@
+/* tuinotes — layout & look. Keep it small: phones render less, so less is faster. */
+
+Screen {
+    background: $background;
+}
+
+Header {
+    background: $primary 15%;
+    color: $text;
+}
+
+HeaderIcon {
+    color: $primary;
+}
+
+Footer {
+    background: $panel;
+}
+
+/* ------------------------------------------------------------- note list --- */
+NoteListScreen #top {
+    height: auto;
+    padding: 0 1;
+    background: $surface;
+}
+
+NoteListScreen #search {
+    margin: 0 0 1 0;
+    border: tall $primary 40%;
+    background: $boost;
+}
+
+NoteListScreen #search:focus {
+    border: tall $primary;
+}
+
+NoteListScreen #touchbar {
+    height: auto;
+    margin-bottom: 1;
+}
+
+NoteListScreen #touchbar Button {
+    margin: 0 1 0 0;
+    min-width: 8;
+    height: 1;
+    padding: 0 1;
+}
+
+NoteListScreen #tagbar {
+    height: auto;
+    max-height: 3;
+    margin-bottom: 1;
+}
+
+NoteListScreen #tagbar.-hidden {
+    display: none;
+}
+
+NoteListScreen #notes {
+    height: 1fr;
+    background: $background;
+}
+
+NoteListScreen #notes > .datatable--header {
+    background: $panel;
+    color: $text-muted;
+    text-style: bold;
+}
+
+NoteListScreen #notes > .datatable--cursor {
+    background: $primary 25%;
+}
+
+NoteListScreen #status {
+    height: 1;
+    dock: bottom;
+    padding: 0 1;
+    background: $panel;
+    color: $text-muted;
+}
+
+/* ---------------------------------------------------------------- editor --- */
+EditorScreen #editor,
+SplitScreen #editor {
+    height: 1fr;
+    border: none;
+    background: $background;
+    padding: 0 1;
+}
+
+EditorScreen #status,
+SplitScreen #status,
+PreviewScreen #status {
+    height: 1;
+    dock: bottom;
+    padding: 0 1;
+    background: $panel;
+    color: $text-muted;
+}
+
+EditorScreen #command,
+SplitScreen #command {
+    height: 3;
+    dock: bottom;
+    border: tall $primary 30%;
+    background: $surface;
+}
+
+EditorScreen #command:focus,
+SplitScreen #command:focus {
+    border: tall $accent;
+}
+
+/* --------------------------------------------------------------- preview --- */
+PreviewScreen #preview-scroll {
+    height: 1fr;
+    padding: 0 2;
+}
+
+PreviewScreen #preview {
+    height: auto;
+}
+
+Markdown H1 {
+    color: $primary;
+}
+
+Markdown H2 {
+    color: $secondary;
+}
+
+Markdown > CodeBlock {
+    background: $panel;
+    padding: 1;
+}
+
+/* ---------------------------------------------------------------- split ---- */
+SplitScreen #panes {
+    height: 1fr;
+    layout: horizontal;
+}
+
+/* Portrait phones: stack the editor above the preview. */
+SplitScreen #panes.-stacked {
+    layout: vertical;
+}
+
+SplitScreen #editor {
+    width: 1fr;
+}
+
+SplitScreen #preview-pane {
+    width: 1fr;
+    border-left: solid $primary 30%;
+    padding: 0 1;
+}
+
+SplitScreen #preview {
+    height: auto;
+}
+
+/* ---------------------------------------------------------------- graph ---- */
+GraphScreen #graph-scroll {
+    height: 1fr;
+    padding: 0 1;
+}
+
+GraphScreen #graph {
+    height: auto;
+}
+
+GraphScreen #edges {
+    height: auto;
+    max-height: 40%;
+}
+
+/* ------------------------------------------------------------- shortcuts --- */
+TagChip.-active {
+    text-style: bold;
+}
