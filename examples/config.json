@@ -1,0 +1,70 @@
+{
+  "notes_dir": "~/notes",
+  "theme": "tuinotes-dark",
+  "theme_light": "tuinotes-light",
+  "follow_system_theme": false,
+  "filename_date_prefix": true,
+  "filename_format": "%Y-%m-%d-{slug}.md",
+  "templates_dir": "",
+  "confirm_delete": true,
+  "startup_command": "",
+  "editor": {
+    "keymap": "vim",
+    "line_numbers": true,
+    "soft_wrap": true,
+    "tab_size": 4,
+    "autosave": true,
+    "autosave_interval": 3.0,
+    "spellcheck": false,
+    "show_word_count": true,
+    "highlight_tags": true,
+    "syntax_highlight": true
+  },
+  "list": {
+    "sort": "modified",
+    "page_size": 100,
+    "show_preview": true,
+    "show_tags": true,
+    "show_date": true,
+    "fuzzy": true,
+    "case_sensitive": false,
+    "max_snippet": 160
+  },
+  "daily": {
+    "enabled": true,
+    "template": "daily",
+    "title_format": "%Y-%m-%d",
+    "open_on_start": false
+  },
+  "trash": {
+    "retention_days": 30
+  },
+  "git": {
+    "enabled": true,
+    "auto_commit": true,
+    "remote": "origin",
+    "branch": "",
+    "commit_message": "tuinotes: update {title}",
+    "min_commit_interval": 10.0,
+    "pull_on_start": false
+  },
+  "termux": {
+    "notifications": true,
+    "clipboard": true,
+    "share": true,
+    "volume_keys": true,
+    "vibrate": false,
+    "keep_awake": false,
+    "voice": true
+  },
+  "export": {
+    "html_template": "default",
+    "pdf_backend": "auto"
+  },
+  "encryption": {
+    "gpg_binary": "gpg",
+    "recipients": [],
+    "cipher": "AES256"
+  },
+  "plugins": []
+}

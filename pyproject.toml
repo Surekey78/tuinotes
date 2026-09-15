@@ -1,0 +1,97 @@
+[build-system]
+requires = ["hatchling>=1.20"]
+build-backend = "hatchling.build"
+
+[project]
+name = "termux-notes"
+version = "0.1.0"
+description = "Fast, touch-friendly Markdown notes in your terminal — built for Termux."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "tuinotes contributors" }]
+keywords = [
+  "notes",
+  "markdown",
+  "tui",
+  "termux",
+  "terminal",
+  "pkm",
+  "zettelkasten",
+  "textual",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: POSIX",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Office/Business :: Scheduling",
+  "Topic :: Text Processing :: Markup :: Markdown",
+]
+dependencies = [
+  # Textual pulls in rich, markdown-it-py, pygments and platformdirs.
+  "textual>=0.86",
+]
+
+[project.optional-dependencies]
+# Real tree-sitter syntax highlighting inside the editor (needs Python 3.10+).
+syntax = ["textual[syntax]; python_version >= '3.10'"]
+dev = [
+  "pytest>=8",
+  "pytest-asyncio>=0.23",
+  "mypy>=1.8",
+  "ruff>=0.4",
+]
+
+[project.scripts]
+tuinotes = "tuinotes.cli:main"
+# `note quick thought` -> note saved. The whole point of the app.
+note = "tuinotes.cli:quick_main"
+tn = "tuinotes.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Surekey78/tuinotes"
+Source = "https://github.com/Surekey78/tuinotes"
+Issues = "https://github.com/Surekey78/tuinotes/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tuinotes"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/tuinotes", "README.md", "LICENSE", "docs", "examples", "scripts", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "-ra"
+filterwarnings = ["ignore::DeprecationWarning:textual.*"]
+
+[tool.mypy]
+python_version = "3.9"
+files = ["src/tuinotes"]
+warn_unused_ignores = false
+ignore_missing_imports = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4"]
+ignore = [
+  "E501",   # line length is handled by the formatter, not the linter
+  # tuinotes supports Python 3.9, so `typing.List`/`Optional` stay: builtin
+  # generics in annotations would break any runtime introspection on 3.9.
+  "UP006",
+  "UP035",
+  "UP045",
+]
